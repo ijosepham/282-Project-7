@@ -1,4 +1,4 @@
-// 282 Project 7.cpp : This file contains the 'main' function. Program execution begins and ends there.
+// 282 Project 7.cpp
 //
 
 #include "pch.h"
@@ -48,6 +48,9 @@ void circularlyTester() {
 	cout << endl << "Rotated." << endl;
 	cList.display();
 
+	cout << endl << endl << "First: " << cList.first();
+	cout << endl << "Last: " << cList.last();
+
 	cout << endl << endl << "removeLast Tester:";
 	for (int i = 0; i < 5; i++) {
 		cout << endl << cList.removeLast() << " - ";
@@ -96,6 +99,9 @@ void doublyTester() {
 		cout << endl << dList.removeLast() << " - ";
 		dList.display();
 	}
+
+	cout << endl << endl << "First: " << dList.first();
+	cout << endl << "Last: " << dList.last();
 
 	cout << endl << endl << "removeFirst Tester:";
 	for (int i = 0; i < 5; i++) {
