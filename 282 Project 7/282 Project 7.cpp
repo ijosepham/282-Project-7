@@ -33,13 +33,6 @@ void circularlyTester() {
 	cout << endl;
 	cList.display(); // 4-0, 0-4
 
-	for (int i = 0; i < 100; i++) {
-		cList.
-	}
-
-
-
-
 	cout << endl << "removeLast Tester:";
 	for (int i = 0; i < 5; i++) {
 		cout << endl << cList.removeLast();

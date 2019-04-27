@@ -9,17 +9,17 @@
 using namespace std;
 
 template <typename T>
-struct Node {
+struct CNode {
 	T data;
-	Node* next;
+	CNode* next;
 };
 
 template <typename T>
 class CircularlyLinkedList
 {
 private:
-	Node <T>* head;
-	Node <T>* tail;
+	CNode <T>* head;
+	CNode <T>* tail;
 	int length;
 public:
 	CircularlyLinkedList() {
@@ -50,7 +50,7 @@ public:
 			return head->data;
 		}
 		else {
-			cout << "List is empty.";
+			cout << "The list is empty.";
 			return NULL;
 		}
 	}
@@ -60,14 +60,14 @@ public:
 			return tail->data;
 		}
 		else {
-			cout << "List is empty.";
+			cout << "The list is empty.";
 			return NULL;
 		}
 	}
 
 	void addFirst(T data) {
 		// create new temp node
-		Node <T>* temp = new Node <T>;
+		CNode <T>* temp = new CNode <T>;
 
 		// assign the given data
 		temp->data = data;
@@ -91,7 +91,7 @@ public:
 
 	void addLast(T data) {
 		// create new temp node
-		Node <T>* temp = new Node <T>;
+		CNode <T>* temp = new CNode <T>;
 
 		// assign the given data
 		temp->data = data;
@@ -147,7 +147,7 @@ public:
 			return data;
 		}
 		else {
-			cout << "List is empty.";
+			cout << "The list is empty.";
 			return NULL;
 		}
 	}
@@ -161,7 +161,7 @@ public:
 			// remove the last node in the list
 
 			// create temp current var
-			Node <T>* current = head;
+			CNode <T>* current = head;
 
 			// iterate to the second to last node
 			for (int i = 0; i < length - 2; i++) {
@@ -190,7 +190,7 @@ public:
 			return data;
 		}
 		else {
-			cout << "List is empty.";
+			cout << "The list is empty.";
 			return NULL;
 		}
 	}
@@ -210,7 +210,7 @@ public:
 			string str = "";
 
 			// temp node to look at data
-			Node <T>* current = head;
+			CNode <T>* current = head;
 
 			// get all contents besides the last one
 			for (int i = 0; i < length - 1; i++) {
@@ -238,16 +238,15 @@ public:
 			return str;
 		}
 		else {
-			return "List is empty.";
+			return "The list is empty.";
 		}
-		
 	}
 
 	void rotate() {
 		// if size is greater than 1
 		if (length > 1) {
 			// temp node to keep track of, but it points to null
-			Node <T>* temp = head;
+			CNode <T>* temp = head;
 			temp->next = NULL;
 			
 			// delete the first node by updating head
