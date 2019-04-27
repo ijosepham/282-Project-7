@@ -23,8 +23,10 @@ private:
 	int length;
 public:
 	CircularlyLinkedList() {
-		head = NULL;
-		tail = NULL;
+		head->data = NULL;
+		head->next = tail;
+		tail->data = NULL;
+		tail->next = head;
 		length = 0;
 	}
 
@@ -79,9 +81,11 @@ public:
 		// increase size
 		length++;
 
-		// if size is now 1, tail is also head
+		// if size is now 1, head points to tail, and tail points to head
 		if (length == 1) {
-			tail = head;
+			tail->data = head->data;
+			head->next = tail;
+			tail->next = head;
 		}
 	}
 
@@ -96,10 +100,18 @@ public:
 		// since its the end of the list
 		temp->next = NULL;
 
-		// if the list is empty
-		if (length == 0) {
+		// increase size
+		length++;
+
+		// if size is now 1
+		if (length == 1) {
+			// both head and tail are the same
 			head = temp;
 			tail = temp;
+
+			// and they point to eachother
+			head->next = tail;
+			tail->next = head;
 		}
 		else { // list isnt empty
 			// insert the node at the end of the list
@@ -107,10 +119,7 @@ public:
 
 			// update last node
 			tail = temp;
-		} 
-
-		// increase size
-		length++;
+		}
 	}
 
 	T removeFirst() {
@@ -128,6 +137,10 @@ public:
 			// if the list is empty/size 1, both head and tail are the same
 			if (length == 0 || length == 1) {
 				tail = head;
+
+				// and they point to eachother
+				head->next = tail;
+				tail->next = head;
 			}
 
 			// return the data
@@ -167,6 +180,10 @@ public:
 			// if the list is empty/size 1, both head and tail are the same
 			if (length == 0 || length == 1) {
 				tail = head;
+
+				// and they point to eachother
+				head->next = tail;
+				tail->next = head;
 			}
 
 			// return the data
@@ -224,6 +241,25 @@ public:
 			return "List is empty.";
 		}
 		
+	}
+
+	void rotate() {
+		// if size is greater than 1
+		if (length > 1) {
+			// temp node to keep track of, but it points to null
+			Node <T>* temp = head;
+			temp->next = NULL;
+			
+			// delete the first node by updating head
+			head = head->next;
+
+			// add the head to the end of the list
+			tail->next = temp;
+
+			// update the tail
+			tail = temp;
+		}
+		// else do nothing
 	}
 };
 
