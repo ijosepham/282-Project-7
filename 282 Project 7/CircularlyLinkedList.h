@@ -44,11 +44,23 @@ public:
 	}
 
 	T first() {
-		return head->data;
+		if (length > 0) {
+			return head->data;
+		}
+		else {
+			cout << "List is empty.";
+			return NULL;
+		}
 	}
 
 	T last() {
-		return tail->data;
+		if (length > 0) {
+			return tail->data;
+		}
+		else {
+			cout << "List is empty.";
+			return NULL;
+		}
 	}
 
 	void addFirst(T data) {
@@ -102,38 +114,68 @@ public:
 	}
 
 	T removeFirst() {
-		// get the contents of the first node
-		T data = head->data;
+		// check if lsit is empty
+		if (length > 0) {
+			// get the contents of the first node
+			T data = head->data;
 
-		// replace the first node with the second one
-		head = head->next;
+			// replace the first node with the second one
+			head = head->next;
 
-		// decrease size
-		length--;
+			// decrease size
+			length--;
+
+			// if the list is empty/size 1, both head and tail are the same
+			if (length == 0 || length == 1) {
+				tail = head;
+			}
+
+			// return the data
+			return data;
+		}
+		else {
+			cout << "List is empty.";
+			return NULL;
+		}
 	}
 
 	T removeLast() {
-		// get the contents of the last node
-		T data = tail->data;
+		// check if its empty
+		if (length > 0) {
+			// get the contents of the last node
+			T data = tail->data;
 
-		// remove the last node in the list
-		
-		// create temp current var
-		Node <T>* current = head;
+			// remove the last node in the list
 
-		// iterate to the second to last node
-		for (int i = 0; i < size - 1; i++) {
-			current = current.next;
+			// create temp current var
+			Node <T>* current = head;
+
+			// iterate to the second to last node
+			for (int i = 0; i < length - 2; i++) {
+				current = current->next;
+			}
+
+			// remove the last node
+			current->next = NULL;
+
+			// update tail
+			tail = current;
+
+			// decrease size
+			length--;
+
+			// if the list is empty/size 1, both head and tail are the same
+			if (length == 0 || length == 1) {
+				tail = head;
+			}
+
+			// return the data
+			return data;
 		}
-
-		// remove the last node
-		current->next = NULL;
-
-		// update tail
-		tail = current;
-
-		// decrease size
-		length--;
+		else {
+			cout << "List is empty.";
+			return NULL;
+		}
 	}
 
 	void display() {
@@ -141,40 +183,47 @@ public:
 	}
 
 	string toString() {
-		// any datatype to string
-		stringstream stream;
-		// temp string of each element
-		string temp = "";
-		// entire tostring 
-		string str = "";
+		// check if the list is empty
+		if (length > 0) {
+			// any datatype to string
+			stringstream stream;
+			// temp string of each element
+			string temp = "";
+			// entire tostring 
+			string str = "";
 
-		// temp node to look at data
-		Node <T>* current = head;
+			// temp node to look at data
+			Node <T>* current = head;
 
-		// get all contents besides the last one
-		for (int i = 0; i < length - 1; i++) {
-			// add the current data to the string
-			stream << current->data << ", ";
+			// get all contents besides the last one
+			for (int i = 0; i < length - 1; i++) {
+				// add the current data to the string
+				stream << current->data << ", ";
 
-			// put the element string on temp
+				// put the element string on temp
+				stream >> temp;
+
+				// add the temp string to the entire tostirng
+				str += temp;
+
+				// go to the next node
+				current = current->next;
+			}
+
+			// add the last data without a comma
+			stream << current->data;
+
+			// add the last temp string to the tostring
 			stream >> temp;
-			
-			// add the temp string to the entire tostirng
 			str += temp;
 
-			// go to the next node
-			current = current->next;
+			// return the tostring
+			return str;
+		}
+		else {
+			return "List is empty.";
 		}
 		
-		// add the last data without a comma
-		stream << current->data;
-
-		// add the last temp string to the tostring
-		stream >> temp;
-		str += temp;
-
-		// return the tostring
-		return str;
 	}
 };
 
