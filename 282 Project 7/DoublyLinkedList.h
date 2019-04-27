@@ -23,12 +23,13 @@ private:
 	int length;
 public:
 	DoublyLinkedList() {
+		header = new DNode <T>;
+		trailer = new DNode <T>;
+
 		header->data = NULL;
 		header->next = trailer;
-		header->prev = NULL;
 
 		trailer->data = NULL;
-		trailer->next = NULL;
 		trailer->prev = header;
 
 		length = 0;
@@ -170,7 +171,7 @@ public:
 			// decrease size
 			length--;
 
-			// if the list is empty/size 1, both head and tail are the same
+			// if the list is empty, header points to trailer
 			if (length == 0) {
 				header->next = trailer;
 			}

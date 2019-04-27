@@ -23,10 +23,15 @@ private:
 	int length;
 public:
 	CircularlyLinkedList() {
+		head = new CNode <T>;
+		tail = new CNode <T>;
+
 		head->data = NULL;
 		head->next = tail;
+
 		tail->data = NULL;
 		tail->next = head;
+
 		length = 0;
 	}
 
