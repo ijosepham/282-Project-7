@@ -58,14 +58,13 @@ void doublyTester() {
 	cout << "isEmpty: " << dList.isEmpty(); // should return 1
 
 	cout << endl << "addLast Tester:";
-	for (int i = 0; i < 5; i++) {
+	for (int i = 2; i < 8; i++) {
 		dList.addLast(i);
 		cout << endl;
 		dList.display();
 	}
 
 	cout << endl;
-	dList.display(); // 0-4
 
 	cout << endl << "isEmpty: " << dList.isEmpty(); // should return 0
 	cout << endl << "Size: " << dList.size(); // should be 5
@@ -80,8 +79,7 @@ void doublyTester() {
 	cout << endl;
 	
 	cout << endl << "removeLast Tester:";
-	for (int i = 0; i < 7; i++) {
-		cout << endl << "First: " << dList.first(); // should be 5
+	for (int i = 0; i < 10; i++) {
 		cout << endl << dList.removeLast() << " - ";
 		dList.display();
 	}
@@ -90,10 +88,12 @@ void doublyTester() {
 
 	cout << endl << "removeFirst Tester:";
 	for (int i = 0; i < 5; i++) {
-		cout << endl << dList.removeFirst();
+		cout << endl << dList.removeFirst() << " - ";
+		dList.display();
 	}
 	cout << endl;
-	dList.display(); // empty
+
+
 }
 
 int main()

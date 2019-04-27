@@ -80,7 +80,10 @@ public:
 		// the node after this should be the node currently after header
 		temp->next = header->next;
 
-		// the node before should be header
+		// the temp should be before the current first node
+		header->next->prev = temp;
+
+		// the node before temp should be header
 		temp->prev = header;
 
 		// insert the node
@@ -190,39 +193,44 @@ public:
 	}
 
 	string toString() {
-		// any datatype to string
-		stringstream stream;
-		// temp string of each element
-		string temp = "";
-		// entire tostring 
-		string str = "";
+		if (length > 0) {
+			// any datatype to string
+			stringstream stream;
+			// temp string of each element
+			string temp = "";
+			// entire tostring 
+			string str = "";
 
-		// temp node to look at data
-		DNode <T>* current = header->next;
+			// temp node to look at data
+			DNode <T>* current = header->next;
 
-		// get all contents besides the last one
-		for (int i = 0; i < length - 1; i++) {
-			// add the current data to the string
-			stream << current->data << ", ";
+			// get all contents besides the last one
+			for (int i = 0; i < length - 1; i++) {
+				// add the current data to the string
+				stream << current->data << ", ";
 
-			// put the element string on temp
+				// put the element string on temp
+				stream >> temp;
+
+				// add the temp string to the entire tostirng
+				str += temp;
+
+				// go to the next node
+				current = current->next;
+			}
+
+			// add the last data without a comma
+			stream << current->data;
+
+			// add the last temp string to the tostring
 			stream >> temp;
-
-			// add the temp string to the entire tostirng
 			str += temp;
 
-			// go to the next node
-			current = current->next;
+			// return the tostring
+			return str;
 		}
-
-		// add the last data without a comma
-		stream << current->data;
-
-		// add the last temp string to the tostring
-		stream >> temp;
-		str += temp;
-
-		// return the tostring
-		return str;
+		else {
+			return "The list is empty.";
+		}
 	}
 };
