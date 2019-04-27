@@ -10,7 +10,10 @@ using namespace std;
 
 template <typename T>
 struct CNode {
+	// data of the node
 	T data;
+
+	// reference to the next node in the list
 	CNode* next;
 };
 
@@ -18,10 +21,16 @@ template <typename T>
 class CircularlyLinkedList
 {
 private:
+	// represents the first node in the list
 	CNode <T>* head;
+
+	// represents the last node in the list, points to the head
 	CNode <T>* tail;
+
+	// size of the list
 	int length;
 public:
+	// description: default constructor
 	CircularlyLinkedList() {
 		head = new CNode <T>;
 		tail = new CNode <T>;
@@ -35,14 +44,19 @@ public:
 		length = 0;
 	}
 
+	// description: destructor
 	~CircularlyLinkedList() {
 
 	}
 
+	// description: gets the size of the list
+	// postcondition: size of the list
 	int size() {
 		return length;
 	}
 
+	// description: returns whether the list is empty or not
+	// postcondition: t/f if list is empty
 	bool isEmpty() {
 		if (length == 0) {
 			return true;
@@ -50,6 +64,8 @@ public:
 		return false;
 	}
 
+	// description: gets the first item in the list
+	// postcondition: first item in the list
 	T first() {
 		if (length > 0) {
 			return head->data;
@@ -60,6 +76,8 @@ public:
 		}
 	}
 
+	// description: gets the last item in the list
+	// postcondition: last item in the list
 	T last() {
 		if (length > 0) {
 			return tail->data;
@@ -70,6 +88,8 @@ public:
 		}
 	}
 
+	// description: adds the data to the list at the beginning of thelist
+	// preconditions: data - data to add to the list
 	void addFirst(T data) {
 		// create new temp node
 		CNode <T>* temp = new CNode <T>;
@@ -94,6 +114,8 @@ public:
 		}
 	}
 
+	// description: adds the data to the list at the end of thelist
+	// preconditions: data - data to add to the list
 	void addLast(T data) {
 		// create new temp node
 		CNode <T>* temp = new CNode <T>;
@@ -127,6 +149,8 @@ public:
 		}
 	}
 
+	// description: removes and returns the first item in the list
+	// postcondition: the first item in the list
 	T removeFirst() {
 		// check if lsit is empty
 		if (length > 0) {
@@ -157,6 +181,8 @@ public:
 		}
 	}
 
+	// description: removes and returns the last item in the list
+	// postcondition: the last item in the list
 	T removeLast() {
 		// check if its empty
 		if (length > 0) {
@@ -200,10 +226,13 @@ public:
 		}
 	}
 
+	// description: prints out the list
 	void display() {
 		cout << toString();
 	}
 
+	// description: gets a stirng representation of the list
+	// postcondition: the list
 	string toString() {
 		// check if the list is empty
 		if (length > 0) {
@@ -248,10 +277,11 @@ public:
 	}
 
 	void rotate() {
-		// if size is greater than 1
+		// if size is 2 or bigger
 		if (length > 1) {
 			// temp node to keep track of, but it points to null
-			CNode <T>* temp = head;
+			CNode <T>* temp = new CNode <T>;
+			temp->data = head->data;
 			temp->next = NULL;
 			
 			// delete the first node by updating head

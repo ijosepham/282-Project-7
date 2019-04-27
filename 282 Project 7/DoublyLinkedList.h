@@ -9,8 +9,13 @@ using namespace std;
 
 template <typename T>
 struct DNode {
+	// data of the node
 	T data;
+
+	// reference to the next node in the list
 	DNode* next;
+
+	// reference to the previous node in the list
 	DNode* prev;
 };
 
@@ -18,10 +23,16 @@ template <typename T>
 class DoublyLinkedList
 {
 private:
+	// dummy node that represents the beginning of the list
 	DNode <T>* header;
+
+	// dummy node that rrepresents the end of the list
 	DNode <T>* trailer;
+	
+	// length of the list
 	int length;
 public:
+	// description: default constructor
 	DoublyLinkedList() {
 		header = new DNode <T>;
 		trailer = new DNode <T>;
@@ -35,14 +46,19 @@ public:
 		length = 0;
 	}
 
+	// description: destructor
 	~DoublyLinkedList() {
 
 	}
 
+	// description: gets the size of the list
+	// postcondition: size of the list
 	int size() {
 		return length;
 	}
 
+	// description: returns whether the list is empty or not
+	// postcondition: t/f if list is empty
 	bool isEmpty() {
 		if (length == 0) {
 			return true;
@@ -50,6 +66,8 @@ public:
 		return false;
 	}
 
+	// description: gets the first item in the list
+	// postcondition: first item in the list
 	T first() {
 		// this should be the second item in the list
 		// the first item is the dummy header
@@ -60,6 +78,8 @@ public:
 		return NULL;
 	}
 
+	// description: gets the last item in the list
+	// postcondition: last item in the list
 	T last() {
 		// this should be the second to last item in the list
 		// the last item should be the dummy trailer
@@ -70,6 +90,8 @@ public:
 		return NULL;
 	}
 
+	// description: adds the data to the list at the beginning of thelist
+	// preconditions: data - data to add to the list
 	void addFirst(T data) {
 		// create new temp node
 		DNode <T>* temp = new DNode <T>;
@@ -98,6 +120,8 @@ public:
 		}
 	}
 
+	// description: adds the data to the list at the end of thelist
+	// preconditions: data - data to add to the list
 	void addLast(T data) {
 		// create new temp node
 		DNode <T>* temp = new DNode <T>;
@@ -130,6 +154,8 @@ public:
 		}
 	}
 
+	// description: removes and returns the first item in the list
+	// postcondition: the first item in the list
 	T removeFirst() {
 		// check if lsit is empty
 		if (length > 0) {
@@ -159,6 +185,8 @@ public:
 		}
 	}
 
+	// description: removes and returns the last item in the list
+	// postcondition: the last item in the list
 	T removeLast() {
 		// check if its empty
 		if (length > 0) {
@@ -188,10 +216,13 @@ public:
 		}
 	}
 
+	// description: prints out the list
 	void display() {
 		cout << toString();
 	}
 
+	// description: gets a stirng representation of the list
+	// postcondition: the list
 	string toString() {
 		if (length > 0) {
 			// any datatype to string

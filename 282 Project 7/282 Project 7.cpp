@@ -9,6 +9,7 @@
 
 using namespace std;
 
+// description: tester class for the circularly linked list
 void circularlyTester() {
 	cout << "Circularly Linked List Tester." << endl;
 	CircularlyLinkedList <int> cList;
@@ -18,7 +19,7 @@ void circularlyTester() {
 	cout << endl << "addLast Tester:";
 	for (int i = 0; i < 5; i++) {
 		cList.addLast(i); 
-		cout << endl;
+		cout << endl << i << " - ";
 		cList.display();
 	}
 
@@ -28,15 +29,26 @@ void circularlyTester() {
 	cout << endl << "Size: " << cList.size(); // should be 5
 
 	cout << endl << endl << "addFirst Tester:";
-	for (int i = 0; i < 5; i++) {
+	for (int i = 5; i < 10; i++) {
 		cList.addFirst(i);
-		cout << endl;
+		cout << endl << i << " - ";
 		cList.display();
 	}
 
-	cout << endl;
+	cout << endl << endl << "Rotate Tester" << endl;
+	cList.rotate();
+	cout << "Rotated." << endl;
+	cList.display();
 
-	cout << endl << "removeLast Tester:";
+	cList.rotate();
+	cout << endl << "Rotated." << endl;
+	cList.display();
+
+	cList.rotate();
+	cout << endl << "Rotated." << endl;
+	cList.display();
+
+	cout << endl << endl << "removeLast Tester:";
 	for (int i = 0; i < 5; i++) {
 		cout << endl << cList.removeLast() << " - ";
 		cList.display();
@@ -51,6 +63,7 @@ void circularlyTester() {
 	cout << endl;
 }
 
+// description: tester class for the doubly linked list
 void doublyTester() {
 	cout << endl << endl << "Doubly Linked List Tester." << endl;
 	DoublyLinkedList <int> dList;
@@ -58,9 +71,9 @@ void doublyTester() {
 	cout << "isEmpty: " << dList.isEmpty(); // should return 1
 
 	cout << endl << "addLast Tester:";
-	for (int i = 2; i < 8; i++) {
+	for (int i = 0; i < 5; i++) {
 		dList.addLast(i);
-		cout << endl;
+		cout << endl << i << " - ";
 		dList.display();
 	}
 
@@ -70,30 +83,26 @@ void doublyTester() {
 	cout << endl << "Size: " << dList.size(); // should be 5
 
 	cout << endl << endl << "addFirst Tester:";
-	for (int i = 0; i < 5; i++) {
+	for (int i = 5; i < 10; i++) {
 		dList.addFirst(i);
-		cout << endl;
+		cout << endl << i << " - ";
 		dList.display();
 	}
 
 	cout << endl;
 	
 	cout << endl << "removeLast Tester:";
-	for (int i = 0; i < 10; i++) {
+	for (int i = 0; i < 5; i++) {
 		cout << endl << dList.removeLast() << " - ";
 		dList.display();
 	}
 
-	cout << endl << dList.size();
-
-	cout << endl << "removeFirst Tester:";
+	cout << endl << endl << "removeFirst Tester:";
 	for (int i = 0; i < 5; i++) {
 		cout << endl << dList.removeFirst() << " - ";
 		dList.display();
 	}
 	cout << endl;
-
-
 }
 
 int main()
