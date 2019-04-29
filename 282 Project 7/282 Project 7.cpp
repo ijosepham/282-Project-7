@@ -17,6 +17,8 @@ void circularlyTester() {
 	cout << "isEmpty: " << cList.isEmpty(); // should return 1
 
 	cout << endl << "addLast Tester:";
+	cout << endl << "L - ";
+	cList.display();
 	for (int i = 0; i < 5; i++) {
 		cList.addLast(i); 
 		cout << endl << i << " - ";
@@ -29,6 +31,8 @@ void circularlyTester() {
 	cout << endl << "Size: " << cList.size(); // should be 5
 
 	cout << endl << endl << "addFirst Tester:";
+	cout << endl << "L - ";
+	cList.display();
 	for (int i = 5; i < 10; i++) {
 		cList.addFirst(i);
 		cout << endl << i << " - ";
@@ -36,22 +40,27 @@ void circularlyTester() {
 	}
 
 	cout << endl << endl << "Rotate Tester" << endl;
-	cList.rotate();
-	cout << "Rotated." << endl;
+	cout << "L - ";
 	cList.display();
 
 	cList.rotate();
-	cout << endl << "Rotated." << endl;
+	cout << endl << "R - ";
 	cList.display();
 
 	cList.rotate();
-	cout << endl << "Rotated." << endl;
+	cout << endl << "R - ";
+	cList.display();
+
+	cList.rotate();
+	cout << endl << "R - ";
 	cList.display();
 
 	cout << endl << endl << "First: " << cList.first();
 	cout << endl << "Last: " << cList.last();
 
 	cout << endl << endl << "removeLast Tester:";
+	cout << endl << "L - ";
+	cList.display();
 	for (int i = 0; i < 5; i++) {
 		cout << endl << cList.removeLast() << " - ";
 		cList.display();
@@ -59,6 +68,8 @@ void circularlyTester() {
 	cout << endl;
 
 	cout << endl << "removeFirst Tester:";
+	cout << endl << "L - ";
+	cList.display();
 	for (int i = 0; i < 5; i++) {
 		cout << endl << cList.removeFirst() << " - ";
 		cList.display();
@@ -74,6 +85,8 @@ void doublyTester() {
 	cout << "isEmpty: " << dList.isEmpty(); // should return 1
 
 	cout << endl << "addLast Tester:";
+	cout << endl << "L - ";
+	dList.display();
 	for (int i = 0; i < 5; i++) {
 		dList.addLast(i);
 		cout << endl << i << " - ";
@@ -86,6 +99,8 @@ void doublyTester() {
 	cout << endl << "Size: " << dList.size(); // should be 5
 
 	cout << endl << endl << "addFirst Tester:";
+	cout << endl << "L - ";
+	dList.display();
 	for (int i = 5; i < 10; i++) {
 		dList.addFirst(i);
 		cout << endl << i << " - ";
@@ -95,6 +110,8 @@ void doublyTester() {
 	cout << endl;
 	
 	cout << endl << "removeLast Tester:";
+	cout << endl << "L - ";
+	dList.display();
 	for (int i = 0; i < 5; i++) {
 		cout << endl << dList.removeLast() << " - ";
 		dList.display();
@@ -104,6 +121,8 @@ void doublyTester() {
 	cout << endl << "Last: " << dList.last();
 
 	cout << endl << endl << "removeFirst Tester:";
+	cout << endl << "L - ";
+	dList.display();
 	for (int i = 0; i < 5; i++) {
 		cout << endl << dList.removeFirst() << " - ";
 		dList.display();
